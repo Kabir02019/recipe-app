@@ -1,0 +1,80 @@
+# version: '3.9'
+
+# services:
+#   db:
+#     image: postgres:15
+#     container_name: recipe-db
+#     restart: always
+#     environment:
+#       POSTGRES_USER: postgres
+#       POSTGRES_DB: recipes
+#     ports:
+#       - "5432:5432"
+#     volumes:
+#       - postgres-data:/var/lib/postgresql/data
+
+#   backend:
+#     build:
+#       context: ./backend
+#     container_name: recipe-backend
+#     ports:
+#       - "5000:5000"
+#     env_file:
+#       - ./backend/.env
+#     depends_on:
+#       - db
+
+#   frontend:
+#     build:
+#       context: ./frontend
+#     container_name: recipe-frontend
+#     ports:
+#       - "3000:80"
+#     depends_on:
+#       - backend
+
+# volumes:
+#   postgres-data:
+
+
+
+
+version: '3.9'
+
+services:
+  db:
+    image: postgres:15
+    platform: linux/amd64
+    container_name: recipe-db
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: recipes
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+
+  backend:
+    build:
+      context: ./backend
+    container_name: recipe-backend
+    ports:
+      - "5000:5000"
+    env_file:
+      - ./backend/.env
+    depends_on:
+      - db
+
+  frontend:
+    build:
+      context: ./frontend
+    container_name: recipe-frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+
+volumes:
+  postgres-data:
