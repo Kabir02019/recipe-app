@@ -78,7 +78,7 @@ const App = () => {
     <div className="app-container">
       <div className="header">
         <img src="/hero-image.jpg"></img>
-        <div className="title">My Recipe App CI/CD</div>
+        <div className="title">My Recipe App CI/CD V2</div>
       </div>
       <div className="tabs">
         <h1
