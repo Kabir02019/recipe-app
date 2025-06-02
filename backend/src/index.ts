@@ -1,3 +1,4 @@
+console.log("API KEY:", process.env.API_KEY);
 import express from "express";
 import cors from "cors";
 import "dotenv/config";
@@ -70,6 +71,8 @@ app.delete("/api/recipes/favourite", async (req, res) => {
   }
 });
 
-app.listen(5000, () => {
-  console.log("server running on localhost:5000");
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+  console.log(`server running on port ${PORT}`);
 });
+
